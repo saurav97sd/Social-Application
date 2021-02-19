@@ -2,6 +2,13 @@
 const User = require('../models/users');
 const db = require('../configs/mongoose');
 
+// Action for profile pager
+module.exports.profile = function(req, res){
+    return res.render('profile', {
+        title: 'Profile | Authentication'
+    });
+};
+
 // Action for sign up
 module.exports.signUp = function(req, res){
     return res.render('user_sign_up',{
