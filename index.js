@@ -7,6 +7,7 @@ const db = require('./configs/mongoose');
 const session = require('express-session'); 
 const passport = require('passport');
 const passportLocal = require('./configs/passport_local_strategy');
+const MongoStore = require('connect-mongo')(session);
 
 // Firing the express server
 const app = express();
@@ -40,7 +41,18 @@ app.use(session({
     cookie: {
         // setting duration of cookie
         maxAge: (1000 * 60 * 100)
-    }
+    },
+    // momgo store is used to store the encrypted session cookie in db
+    store: new MongoStore(
+        {
+            mongooseConnection: db,
+            autoRemove: 'disabled'
+        },
+        function(err){
+            console.log(err || 'Connect-mongodb setup ok');
+        }
+    )
+
 }));
 // Telling the app to use passport
 app.use(passport.initialize());
