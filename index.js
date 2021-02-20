@@ -4,6 +4,9 @@ const port = 8000;
 const expressLayout = require('express-ejs-layouts');
 const cookieParser = require('cookie-parser');
 const db = require('./configs/mongoose');
+const session = require('express-session'); 
+const passport = require('passport');
+const passportLocal = require('./configs/passport_local_strategy');
 
 // Firing the express server
 const app = express();
@@ -21,14 +24,30 @@ app.use(expressLayout);
 app.set('layout extractStyles', true);
 app.set("layout extractScripts", true);
 
-// importing or using the express router ------------------------------------- 3
-app.use('/', require('./routes/routes'));
 
 // telling server we want to use view engine --------------------------------- 4
 // set up view engine
 app.set('view engine', 'ejs');
 // show the path to the views folder
 app.set('views', './views');
+
+// Add middleware which takes session cookie and encrypt it
+app.use(session({
+    name: 'codiel',
+    secret: 'blahsomething', //key used to encrypt
+    saveUninitialized: false,
+    resave: false,
+    cookie: {
+        // setting duration of cookie
+        maxAge: (1000 * 60 * 100)
+    }
+}));
+// Telling the app to use passport
+app.use(passport.initialize());
+app.use(passport.session());
+
+// importing or using the express router ------------------------------------- 3
+app.use('/', require('./routes/routes'));
 
 // Listen to the server to check if its working
 app.listen(port, function (err) {

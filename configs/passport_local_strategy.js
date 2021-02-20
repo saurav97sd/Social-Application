@@ -11,7 +11,7 @@ const User = require('../models/users');
 passport.use(new LocalStrategy({
     usernameField: 'email' //its to be used to validate the user
     },
-    function(email, password,done) {
+    function(email, password, done) {
         // find the user and establish identity
         User.findOne({email: email}, function(err,user) {
             // if error
@@ -43,11 +43,11 @@ passport.serializeUser(function(user, done){
 passport.deserializeUser(function(id, done) {
     User.findById(id, function(err, user){
         if(err){
-            console.log('Error in finding user: ' + err);
+            console.log('Error in finding user');
             return done(err);
         }
         // else
-        return done(user);
+        return done(null, user);
     });
 });
 
