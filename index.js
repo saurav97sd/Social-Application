@@ -46,6 +46,8 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
+app.use(passport.setAuthenticatedUser);
+
 // importing or using the express router ------------------------------------- 3
 app.use('/', require('./routes/routes'));
 
