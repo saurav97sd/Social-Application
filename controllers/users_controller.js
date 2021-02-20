@@ -74,3 +74,10 @@ module.exports.create = function(req, res){
 module.exports.createSession = function(req, res){
     return res.redirect('/');
 };
+
+
+// adding the action for signout
+module.exports.signOut = function(req, res){
+    req.logout(); //telling the passport to delete the session cookie, its the function given to the rq by passport.
+    return res.redirect('/');
+}
