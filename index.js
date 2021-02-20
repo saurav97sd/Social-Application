@@ -8,6 +8,15 @@ const session = require('express-session');
 const passport = require('passport');
 const passportLocal = require('./configs/passport_local_strategy');
 const MongoStore = require('connect-mongo')(session);
+const sassMiddleware = require('node-sass-middleware');
+
+app.use(sassMiddleware({
+    src: '/assets/scss',
+    dest: '/assets/css',
+    debug: true,
+    outputStyle: 'expanded',
+    prefix: '/css'
+}));
 
 // Firing the express server
 const app = express();
