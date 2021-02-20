@@ -1,8 +1,11 @@
 // intialing server
 const express = require('express');
+const cookieParser = require('cookie-parser');
+// Firing the express server
+const app = express();
+
 const port = 8000;
 const expressLayout = require('express-ejs-layouts');
-const cookieParser = require('cookie-parser');
 const db = require('./configs/mongoose');
 const session = require('express-session'); 
 const passport = require('passport');
@@ -10,16 +13,15 @@ const passportLocal = require('./configs/passport_local_strategy');
 const MongoStore = require('connect-mongo')(session);
 const sassMiddleware = require('node-sass-middleware');
 
+
 app.use(sassMiddleware({
-    src: '/assets/scss',
-    dest: '/assets/css',
+    src: './assets/scss',
+    dest: './assets/css',
     debug: true,
     outputStyle: 'expanded',
     prefix: '/css'
 }));
 
-// Firing the express server
-const app = express();
 
 // Telling the express server use cookie parser--------------------------------0
 app.use(express.urlencoded());
