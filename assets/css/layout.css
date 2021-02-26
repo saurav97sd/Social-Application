@@ -49,7 +49,7 @@ body footer .footer-container {
   display: flex;
   color: white;
   background: #a5a5f1;
-  background: linear-gradient(90deg, #a5a5f1 0%, #9191f1 35%, #7070f1 100%);
+  background: linear-gradient(150deg, #a5a5f1 0%, #9191f1 35%, #7070f1 100%);
   align-items: center;
   padding: 0 2rem;
 }

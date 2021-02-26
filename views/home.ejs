@@ -1,1 +1,14 @@
-<h1>The Home Page of <%= title %> </h1>
+<h1>The <%= title %> Page</h1>
+
+<section id="feed-posts">
+    <!-- Form for post only to logged in user -->
+    <% if(locals.user){ %>
+        <h4>Post</h4>
+        <form action="" method="POST" id="new-post-form">
+            <textarea name="content" id="" cols="30" rows="3" placeholder="Type here ...."></textarea>
+            <input type="submit" value="Post">
+        </form>
+
+    <% } %>
+    
+</section>
