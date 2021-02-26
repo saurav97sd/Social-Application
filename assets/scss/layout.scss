@@ -52,7 +52,8 @@ body{
             height: 5rem;
             display: flex;
             color: white;
-            background-color: #7070f1;
+            background: rgb(165,165,241);
+            background: linear-gradient(90deg, rgba(165,165,241,1) 0%, rgba(145,145,241,1) 35%, rgba(112,112,241,1) 100%);
             
             align-items: center;
             padding: 0 2rem;

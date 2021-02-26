@@ -48,7 +48,8 @@ body footer .footer-container {
   height: 5rem;
   display: flex;
   color: white;
-  background-color: #7070f1;
+  background: #a5a5f1;
+  background: linear-gradient(90deg, #a5a5f1 0%, #9191f1 35%, #7070f1 100%);
   align-items: center;
   padding: 0 2rem;
 }
