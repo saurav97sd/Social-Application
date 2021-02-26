@@ -12,32 +12,53 @@
 
     <body>
         <header>
-            <h1>Learning Authentication</h1>
-            <ul><!-- addding the links -->
-                <% if(locals.user){ %>
-                    <li>
-                        <a href="/users/profile"> <%= user.name %> </a>
-                    </li>
+            <div class="header-container">
+                <h1>Codiel</h1>
+                
+                    <ul><!-- addding the links -->
+                        <% if(locals.user){ %>
+                            <li>
+                                <a href="/users/profile"> <%= user.name %> </a>
+                            </li>
 
-                    <li>
-                        <a href="/users/sign-out"> Sign Out</a>
-                    </li>
+                            <li>
+                                <a href="/users/sign-out"> Sign Out</a>
+                            </li>
 
-                <% }else{ %>
-                    <li>
-                        <a href="/users/sign-in"> Sign In</a>
-                    </li>
-                    <li>
-                        <a href="/users/sign-up"> Sign Up</a>
-                    </li>
-                <% } %>    
-            </ul>
+                        <% }else{ %>
+                            <li>
+                                <a href="/users/sign-in"> Sign In</a>
+                            </li>
+                            <li>
+                                <a href="/users/sign-up"> Sign Up</a>
+                            </li>
+                        <% } %>    
+                    </ul>
+                
+            </div>
         </header>
 
-        <%- body %>
+
+        <main>
+            <%- body %>
+        </main>
+        
 
         <footer>
-            This is the footer of this page
+            <div class="footer-container">
+
+                <h2>Created by Saurav</h2>
+                <ul><!-- addding the links -->
+                    <li>
+                        <a href="/"> Home </a>
+                    </li>
+
+                    <li>
+                        <a href="/users/profile"> Profile</a>
+                    </li>  
+                </ul>
+
+            </div>
         </footer>
     </body>
 </html>
