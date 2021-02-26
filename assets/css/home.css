@@ -1,0 +1,16 @@
+#feed-posts {
+  margin: 2rem auto;
+}
+
+#feed-posts #post-form {
+  text-align: center;
+}
+
+#feed-posts #post-form input {
+  display: block;
+  margin: auto;
+}
+
+#feed-posts #post-list-container ul li {
+  margin-bottom: 1rem;
+}

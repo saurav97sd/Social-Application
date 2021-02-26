@@ -1,0 +1,24 @@
+
+#feed-posts{
+    margin: 2rem auto ;
+
+    #post-form{
+        text-align: center;
+        input{
+            display:block;
+            margin: auto;
+        }
+    }
+
+    #post-list-container{
+        ul{
+            li{
+                margin-bottom: 1rem;
+            }
+        }
+    }
+}
+
+
+
+

@@ -1,14 +1,33 @@
+<link type="text/css" rel="stylesheet" href="/css/home.css">
 <h1>The <%= title %> Page</h1>
 
 <section id="feed-posts">
     <!-- Form for post only to logged in user -->
-    <% if(locals.user){ %>
-        <h4>Post</h4>
-        <form action="/posts/create" method="POST" id="new-post-form">
-            <textarea name="content" id="" cols="30" rows="3" placeholder="Type here ...."></textarea>
-            <input type="submit" value="Post">
-        </form>
+    <div id="post-form"> 
+        <% if(locals.user){ %>
+            <h2>Post</h2>
+            <form action="/posts/create" method="POST" id="new-post-form">
+                <textarea name="content" id="" cols="30" rows="3" placeholder="Type here ...."></textarea>
+                <input type="submit" value="Post">
+            </form>
 
-    <% } %>
+        <% } %>
+    </div>
+
+    <!-- Display the posts -->
+    <div id="post-list-container">
+        <ul>
+            <% for(post of posts){ %>
+                <li>
+                    <p>
+                        <h3><%= post.content%></h3>
+                        <small>
+                            <%= post.user.name%>
+                        </small>
+                    </p>
+                </li>
+            <% } %>
+        </ul>
+    </div>
     
 </section>
