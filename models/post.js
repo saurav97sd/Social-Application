@@ -9,7 +9,17 @@ const postSchema = new mongoose.Schema({
     user: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User'
-    }
+    },
+
+    // adding this after creating the comment Schema
+    // include the array of all the comments in the post schema itself, to acces the comments faster
+    comments: [
+        {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Comment'
+        }
+    ]
+
 },{
     timestamps: true
 });
