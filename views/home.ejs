@@ -26,6 +26,20 @@
                             <%= post.user.name%>
                         </small>
                     </p>
+
+                    <!-- adding form for the comment -->
+                    <div id="post-comments">
+                        <!-- form for only signed in users -->
+                        <% if(locals.user){ %>
+                            <form action="/comments/create" method="post">
+                                <input type="text" name="content" placeholder="Type here to add comment.....">
+                                <!-- pre initializing post id -->
+                                <input type="hidden" name="post" value="<%= post._id%>"> 
+                                <input type="submit" value="Add Comment">
+                            </form>
+                        <% } %>    
+                    </div>
+
                 </li>
             <% } %>
         </ul>
