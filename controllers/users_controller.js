@@ -85,3 +85,15 @@ module.exports.signOut = function(req, res){
     req.logout(); //telling the passport to delete the session cookie, its the function given to the rq by passport.
     return res.redirect('/');
 }
+
+// controller for the updating the 
+module.exports.update = function(req, res){
+    // checking so that other cant chnages
+    if(req.user.id == req.params.id){
+        User.findByIdAndUpdate(req.params.id, req.body, function(err, user){
+            return res.redirect('back');
+        });
+    }else{
+        return res.status(401).send('Unauthorized');
+    }
+}
