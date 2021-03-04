@@ -38,8 +38,9 @@ body header .header-container ul li a {
 }
 
 body main {
-  padding-top: 2rem;
-  height: 100vh;
+  margin-bottom: -2rem;
+  padding-bottom: 1rem;
+  padding-top: 1.5rem;
   background: #f9f9fb;
   background: linear-gradient(163deg, #f9f9fb 0%, #d7d7f1 35%, #7070f1 100%);
 }

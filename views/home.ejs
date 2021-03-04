@@ -29,6 +29,24 @@
 
                     <!-- adding form for the comment -->
                     <div id="post-comments">
+                        
+                        <!-- Showing comment before the form -->
+                        <div class="post-comments-list">
+                            <ul id="post-comments-<%= post._id%>">
+                                <% for(comment of post.comments){ %>
+                                    <li>
+                                        <p>
+                                            <%= comment.content %>
+                                            <br>
+                                            <small>
+                                                <%= comment.user.name %>
+                                            </small>
+                                        </p>
+                                    </li>
+                                <% } %>
+                            </ul>
+                        </div>
+
                         <!-- form for only signed in users -->
                         <% if(locals.user){ %>
                             <form action="/comments/create" method="post">
@@ -39,7 +57,8 @@
                             </form>
                         <% } %>    
                     </div>
-
+                    
+                    
                 </li>
             <% } %>
         </ul>

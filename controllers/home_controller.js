@@ -19,7 +19,27 @@ module.exports.home = function(req, res){
     // });
 
     // to get the user info from another schema need to prepopulate the user of post db
-    Post.find({}).populate('user').exec(function(err,posts){
+    // Post.find({}).populate('user').exec(function(err,posts){
+    //     if(err){
+    //         console.log('Error finding Post');
+    //     }
+    //      // else
+    //     return res.render('home', {
+    //         title: "Home | Authentication",
+    //         posts: posts
+    //     });
+    // }); 
+
+    // to show post along side the comments
+    Post.find({})
+    .populate('user')
+    .populate({
+        path: 'comments',
+        populate: {
+            path: 'user'
+        }
+    })
+    .exec(function(err,posts){
         if(err){
             console.log('Error finding Post');
         }
