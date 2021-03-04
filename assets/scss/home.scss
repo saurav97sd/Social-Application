@@ -1,23 +1,36 @@
+#home-container{
+    display: flex;
 
-#feed-posts{
-    margin: 2rem auto ;
-
-    #post-form{
-        text-align: center;
-        input{
-            display:block;
-            margin: auto;
+    #feed-posts{
+        // margin: 2rem auto ;
+        width: 80%;
+        padding: 10px;
+    
+        #post-form{
+            text-align: center;
+            input{
+                display:block;
+                margin: auto;
+            }
         }
-    }
-
-    #post-list-container{
-        ul{
-            li{
-                margin-top: 1rem;
+    
+        #post-list-container{
+            ul{
+                li{
+                    margin-top: 1rem;
+                }
             }
         }
     }
+
+    #user-friends{
+        width: 20%;
+        padding: 10px;
+        border-left: 1px solid black;
+        // height: 100%;
+    }
 }
+
 
 
 
