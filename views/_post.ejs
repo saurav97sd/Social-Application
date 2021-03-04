@@ -1,0 +1,40 @@
+<li>
+    <p>
+        <h3><%= post.content%></h3>
+        <small>
+            <%= post.user.name%>
+        </small>
+    </p>
+    <!-- The anchor tag to delete the post -->
+    <% if(locals.user && locals.user.id == post.user.id){ %>
+        <small>
+            <a href="/posts/destroy/<%= post.id %>">X</a>
+        </small>
+    <% } %>
+
+    <!-- adding form for the comment -->
+    <div id="post-comments">
+        
+        <!-- Showing comment before the form -->
+        <div class="post-comments-list">
+            <ul id="post-comments-<%= post._id%>">
+                <% for(comment of post.comments){ %>
+                    <!-- using artial to distribute the file -->
+                    <%- include('_comment') -%>
+                <% } %>
+            </ul>
+        </div>
+
+        <!-- form for only signed in users -->
+        <% if(locals.user){ %>
+            <form action="/comments/create" method="post">
+                <input type="text" name="content" placeholder="Type here to add comment.....">
+                <!-- pre initializing post id -->
+                <input type="hidden" name="post" value="<%= post._id%>"> 
+                <input type="submit" value="Add Comment">
+            </form>
+        <% } %>    
+    </div>
+    
+    
+</li>
