@@ -4,9 +4,13 @@ const db = require('../configs/mongoose');
 
 // Action for profile pager
 module.exports.profile = function(req, res){
-    return res.render('profile', {
-        title: 'Profile | Authentication'
+    User.findById(req.params.id, function(err, user){
+        return res.render('profile', {
+            title: 'Profile | Authentication',
+            profile_user: user
+        });
     });
+    
 };
 
 // Action for sign up

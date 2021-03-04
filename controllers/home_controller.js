@@ -1,5 +1,6 @@
 // const db = require('../configs/mongoose');
 const Post = require('../models/post'); //require post model
+const User = require('../models/users');
 
 module.exports.home = function(req, res){
 
@@ -44,9 +45,13 @@ module.exports.home = function(req, res){
             console.log('Error finding Post');
         }
          // else
-        return res.render('home', {
-            title: "Home | Authentication",
-            posts: posts
+        //  find users to show in friends list
+        User.find({}, function(err,users){
+            return res.render('home', {
+                title: "Home | Authentication",
+                posts: posts,
+                all_users: users
+            });
         });
     }); 
 }
