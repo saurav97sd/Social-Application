@@ -38,6 +38,7 @@ body header .header-container ul li a {
 }
 
 body main {
+  height: 100vh;
   margin-bottom: -2rem;
   padding-bottom: 1rem;
   padding-top: 1.5rem;

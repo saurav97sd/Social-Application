@@ -8,4 +8,7 @@ const postController = require('../controllers/posts_controller');
 // linking action for controller with the route
 router.post('/create', passport.checkAuthentication, postController.create);
 
+// creating the route for the link to delete post
+router.get('/destroy/:id', passport.checkAuthentication, postController.destroy);
+
 module.exports = router;
