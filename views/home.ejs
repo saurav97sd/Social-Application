@@ -42,6 +42,13 @@
                                 <% for(comment of post.comments){ %>
                                     <li>
                                         <p>
+                                            <!-- check if user logged in and the destroyer written the comment -->
+                                            <% if(locals.user && locals.user.id == comment.user.id){ %>
+                                                <small>
+                                                    <a href="/comments/destroy/<%= comment.id %>">X</a>
+                                                </small>
+                                            <% } %>
+                                            
                                             <%= comment.content %>
                                             <br>
                                             <small>

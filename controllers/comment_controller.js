@@ -33,3 +33,21 @@ module.exports.create = (req, res) => {
         }
     });
 };
+
+
+// controller to delete the comments
+module.exports.destroy = function(req, res){
+    // find he comments
+    Comment.findById(req.params.id, function(err, comment){
+        // only the one who wrote can delete the comment
+        if(comment.user == req.user.id){
+            let postId = comment.post;
+            comment.remove();
+            Post.findById(postId, {$pull : {comments: req.params.id}} ,function(err,post){
+                return res.redirect('back');
+            });
+        }else{
+            return res.redirect('back');
+        }
+    });
+};
