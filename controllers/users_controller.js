@@ -76,13 +76,17 @@ module.exports.create = function(req, res){
 
 // Sign in and create session for the user
 module.exports.createSession = function(req, res){
+    // add flash message
+    req.flash('success', 'Logged in successfully');
     return res.redirect('/');
 };
 
 
-// adding the action for signout
+// adding the action for signout or destroy session
 module.exports.signOut = function(req, res){
     req.logout(); //telling the passport to delete the session cookie, its the function given to the rq by passport.
+    // add another flash message
+    req.flash('success', 'You have logged out');
     return res.redirect('/');
 }
 
