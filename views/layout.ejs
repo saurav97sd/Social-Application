@@ -5,6 +5,10 @@
             <%= title%>
         </title>
         
+        <!-- links for noty flash messages -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/noty/3.1.4/noty.min.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/noty/3.1.4/noty.min.js"></script>
+
         <link type="text/css" rel="stylesheet" href="/css/layout.css">
 
         <%- style %>
@@ -39,11 +43,11 @@
         </header>
 
         <!-- Adding the flash message here above main temorarily -->
-        <% if(flash.success && flash.success.length > 0) { %>
+        <!-- <% if(flash.success && flash.success.length > 0) { %>
             <h5>
                 <%= flash.success%>
             </h5>
-        <% } %>
+        <% } %> -->
 
         <main>
             <%- body %>
@@ -66,5 +70,35 @@
 
             </div>
         </footer>
+
+        <%- script %>
+        <script>
+            // show flash message using noty
+            <% if(flash.success && flash.success.length > 0){ %>
+
+                // for success message
+                new Noty({
+                    theme: 'relax',
+                    text: '<%= flash.success%>',
+                    type: 'success',
+                    layout: 'topCenter',
+                    timeout: 1500
+                }).show();
+                
+            <% } %>  
+            
+            <% if(flash.error && flash.error.length > 0){ %>
+
+                // for error message
+                new Noty({
+                    theme: 'relax',
+                    text: '<%= flash.error%>',
+                    type: 'error',
+                    layout: 'topCenter',
+                    timeout: 1500
+                }).show();
+
+            <% } %>
+        </script>
     </body>
 </html>
