@@ -1,4 +1,4 @@
-<li>
+<li id="post-<%=post._id%>">
     <p>
         <h3><%= post.content%></h3>
         <small>
@@ -8,7 +8,7 @@
     <!-- The anchor tag to delete the post -->
     <% if(locals.user && locals.user.id == post.user.id){ %>
         <small>
-            <a href="/posts/destroy/<%= post.id %>">X</a>
+            <a class="delete-psot-button" href="/posts/destroy/<%= post.id %>">X</a>
         </small>
     <% } %>
 
