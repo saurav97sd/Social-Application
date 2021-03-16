@@ -59,6 +59,7 @@ module.exports.home = async function(req, res){
     // using async await to get rid off call back hell
     try{
         let posts = await Post.find({})
+        .sort('-createdAt') //sorting the post 
         .populate('user')
         .populate({
             path: 'comments',

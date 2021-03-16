@@ -8,7 +8,7 @@
     <!-- The anchor tag to delete the post -->
     <% if(locals.user && locals.user.id == post.user.id){ %>
         <small>
-            <a class="delete-psot-button" href="/posts/destroy/<%= post.id %>">X</a>
+            <a class="delete-post-button" href="/posts/destroy/<%= post.id %>">X</a>
         </small>
     <% } %>
 
