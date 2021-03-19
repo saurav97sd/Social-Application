@@ -32,6 +32,10 @@ app.use(cookieParser());
 // Telling the server where it should look for static files ------------------ 1
 app.use(express.static('./assets'));
 
+// setting the link of user avatar gor the browser
+// making the upload path available for the browser
+app.use('/uploads', express.static(__dirname + '/uploads'));
+
 // Telling server to use layouts --------------------------------------------- 2.1
 app.use(expressLayout);
 // Telling the server to put the static files of the sub ejs files in the right place of layout file ------------ 2.2

@@ -1,6 +1,7 @@
 <link type="text/css" rel="stylesheet" href="/css/user_profile.css">
 
-<h1>Profile | Authentication</h1>
+<!-- showing avatar icons-->
+<img src="<%= user.avatar %>" alt="<%= user.name %>" width="150">
 
 <% if(user.id == profile_user.id){ %>
     <!-- if user match show update form -->
