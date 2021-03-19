@@ -1,6 +1,8 @@
 // Importing the model schema to create json objects in db
 const User = require('../models/users');
 const db = require('../configs/mongoose');
+const fs = require('fs');
+const path = require('path');
 
 // Action for profile pager
 module.exports.profile = function(req, res){
@@ -114,7 +116,13 @@ module.exports.update = async function(req, res){
                 user.email = req.body.email;
 
                 if(req.file){
+                    if(user.avatar){
+                        fs.unlinkSync(path.join(__dirname,'..',user.avatar));
+                    }
+                    
                     user.avatar = User.avatarPath + '/' + req.file.filename;
+                    
+                    
                 }
                 user.save();
                 return res.redirect('back');
