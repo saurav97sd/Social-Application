@@ -11,7 +11,7 @@ router.get('/sign-in', userController.signIn);
 // changed /profile to /profile/:id
 router.get('/profile/:id', passport.checkAuthentication, userController.profile); //added middleware to restrict unauthorized
 // router for the update form-data
-router.get('/update/:id', passport.checkAuthentication, userController.profile);
+router.post('/update/:id', passport.checkAuthentication, userController.update); 
 
 // router to create a new object in db
 router.post('/create', userController.create);
