@@ -20,12 +20,26 @@ const userSchema = new mongoose.Schema({
     name: {
         type: 'string',
         required: true
+    },
+    // avatar field
+    avatar: {
+        type: 'string'
     }
 
     // Now adding timestamp ie, createdat and updated at
 }, {
     timestamps: true
 });
+
+// configuring multer
+let storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+      cb(null, path.join(__dirname,'..',AVATAR_PATH))
+    },
+    filename: function (req, file, cb) {
+      cb(null, file.fieldname + '-' + Date.now())
+    }
+})
 
 // telling mongo it's model 
 const User = mongoose.model('User', userSchema);
