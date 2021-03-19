@@ -1,16 +1,19 @@
 <li id="post-<%=post._id%>">
+    <!-- The anchor tag to delete the post -->
     <p>
+        <% if(locals.user && locals.user.id == post.user.id){ %>
+            <small>
+                <a class="delete-post-button" href="/posts/destroy/<%= post.id %>">X</a>
+            </small>
+        <% } %>
+
+    
         <h3><%= post.content%></h3>
         <small>
             <%= post.user.name%>
         </small>
     </p>
-    <!-- The anchor tag to delete the post -->
-    <% if(locals.user && locals.user.id == post.user.id){ %>
-        <small>
-            <a class="delete-post-button" href="/posts/destroy/<%= post.id %>">X</a>
-        </small>
-    <% } %>
+    
 
     <!-- adding form for the comment -->
     <div id="post-comments">
