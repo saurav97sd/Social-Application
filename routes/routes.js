@@ -14,5 +14,8 @@ router.use('/users', require('./users'));
 router.use('/posts', require('./posts'));
 router.use('/comments', require('./comments'));
 
+// making sure rotes know about the api folder
+router.use('/api', require('./api'));
+
 module.exports = router;
 
