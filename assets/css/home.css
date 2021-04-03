@@ -16,6 +16,10 @@
   margin: auto;
 }
 
+#home-container #feed-posts #post-list-container {
+  margin-bottom: 2rem;
+}
+
 #home-container #feed-posts #post-list-container ul li {
   margin-top: 1rem;
 }
