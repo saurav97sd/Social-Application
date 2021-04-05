@@ -1,6 +1,7 @@
 // importing the post and comment model schema
 const Comment = require('../models/comment');
 const Post = require('../models/post');
+const commentMailer = require('../mailers/comments_mailer');
 
 // module.exports.create = (req, res) => {
 //     // find post if exist then add comment else not 
@@ -75,10 +76,13 @@ module.exports.create = async function(req, res){
 
             post.comments.push(comment);
             post.save();
+            
+            comment = await comment.populate('user', 'name email').execPopulate();
+            commentMailer.newComment(comment);
 
             if (req.xhr){
                 // Similar for comments to fetch the user's id!
-                comment = await comment.populate('user', 'name').execPopulate();
+                
     
                 return res.status(200).json({
                     data: {
