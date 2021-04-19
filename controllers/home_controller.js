@@ -65,8 +65,11 @@ module.exports.home = async function(req, res){
             path: 'comments',
             populate: {
                 path: 'user'
+            },
+            populate: {
+                path: 'likes'
             }
-        });
+        }).populate('likes');
 
         //Remove the exec() call back function for above function
         let users = await User.find({}); //similarly removing its call back

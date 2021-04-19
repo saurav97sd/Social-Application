@@ -38,12 +38,14 @@ module.exports.toggleLike = async function(req, res){
             likeable.likes.push(newLike.id);
             likeable.save();
         }
-        return res.json(200, {
-            message: "Request Successful",
-            data: {
-                deleted : deleted
-            }
-        })
+        // return res.json(200, {
+        //     message: "Request Successful",
+        //     data: {
+        //         deleted : deleted
+        //     }
+        // })
+
+        return res.redirect('back');
 
     }catch(err){
         console.log(err);
